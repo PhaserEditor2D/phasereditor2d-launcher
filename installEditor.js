@@ -86,9 +86,6 @@ export async function installEditor() {
         return execFile
     }
 
-    console.log(`# Installing Phaser Editor 2D v${ver}`)
-    console.log();
-
     mkdirSync(installsDir, { recursive: true })
 
     // download
