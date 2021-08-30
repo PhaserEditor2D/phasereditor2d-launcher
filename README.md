@@ -23,11 +23,8 @@ $ npm install -g phasereditor2d-launcher
 The `phasereditor2d-launcher` package is a command line tool. You can run it like this:
 
 ```bash
-$ npx phasereditor2d-launcher -- -project path/to/project
+$ npx phasereditor2d-launcher -project path/to/project
 ```
-
-Note you should write the Phaser Editor 2D Core arguments after the `--` string.
-
 
 If you used one of the project templates provided by Phaser Editor 2D, then you can run the launcher this way:
 
