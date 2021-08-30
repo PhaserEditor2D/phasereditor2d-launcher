@@ -1,0 +1,34 @@
+{
+  "name": "phasereditor2d-launcher",
+  "version": "3.20.0-next",
+  "type": "module",
+  "description": "Phaser Editor 2D launcher for NPM based projects.",
+  "bin": "cli.js",
+  "dependencies": {
+    "adm-zip": "^0.5.5",
+    "cli-progress": "^3.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhaserEditor2D/phasereditor2d-launcher.git"
+  },
+  "keywords": [
+    "phaser",
+    "video-game",
+    "html5",
+    "ide",
+    "editor",
+    "level",
+    "animations"
+  ],
+  "author": "Phaser Editor 2D <developers@phasereditor2d.com> (https://phasereditor2d.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PhaserEditor2D/phasereditor2d-launcher/issues"
+  },
+  "homepage": "https://github.com/PhaserEditor2D/phasereditor2d-launcher#readme"
+}
