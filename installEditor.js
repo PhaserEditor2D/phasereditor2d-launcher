@@ -4,15 +4,12 @@ import { homedir } from "os"
 import path, { dirname } from "path"
 import AdmZip from "adm-zip"
 import { fileURLToPath } from "url"
-import { Presets, SingleBar } from "cli-progress"
 
 function download(url, dest) {
 
     console.log(`Fetching ${url}`)
 
     return new Promise((resolve, reject) => {
-
-        const bar = new SingleBar({ format: "{bar} {percentage}%" }, Presets.shades_classic)
 
         var file = createWriteStream(dest);
 
@@ -27,23 +24,10 @@ function download(url, dest) {
                     throw new Error("Network error downloading " + url)
                 }
 
-                const totalBytes = Number.parseInt(response.headers['content-length']);
-                
-                bar.start(totalBytes, 0)
-
-                let receivedBytes = 0
-
-                response.on("data", chunk => {
-
-                    receivedBytes += chunk.length
-                    bar.update(receivedBytes)
-                })
-
+                response
                     .pipe(file)
-
                     .on("error", () => {
 
-                        bar.stop()
                         unlink(file)
 
                         throw new Error("Cannot write to file")
@@ -51,12 +35,10 @@ function download(url, dest) {
 
                 file.on("finish", function () {
 
-                    bar.stop()
                     resolve()
 
                 }).on("error", () => {
 
-                    bar.stop()
                     unlink(file)
 
                     throw new Error("Cannot write to file")
