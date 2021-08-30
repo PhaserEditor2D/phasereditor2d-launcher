@@ -99,8 +99,7 @@ export async function installEditor() {
 
     // unzip
 
-    console.log();
-    console.log(`Unzipping ${outputFile}...`)
+    console.log(`Unzipping ${outputFile}`)
 
     mkdirSync(distInstallDir, { recursive: true })
 

@@ -7,7 +7,7 @@ const execFile = await installEditor()
 const args = process.argv.slice(2)
 
 console.log(`Launching ${execFile} [${args.map(s => `"${s}"`).join(",")}]`)
-console.log()
+console.log();
 
 child_process.spawnSync(execFile, args, {
     windowsHide: true,
