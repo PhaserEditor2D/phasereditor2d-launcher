@@ -1,5 +1,5 @@
 import http from "https"
-import { createWriteStream, existsSync, fstat, mkdirSync, readFileSync, unlink } from "fs"
+import { chmodSync, createWriteStream, existsSync, fstat, mkdirSync, readFileSync, unlink } from "fs"
 import { homedir } from "os"
 import path, { dirname } from "path"
 import AdmZip from "adm-zip"
@@ -92,10 +92,13 @@ export async function installEditor() {
 
     const outputFile = path.join(installsDir, fileName)
 
-    const updatesUrl = "https://updates.phasereditor2d.com"
-    const fileUrl = `${updatesUrl}/v${ver}/PhaserEditor2D-core-${ver}-${platform}.zip`
+    if (!existsSync(outputFile)) {
 
-    await download(fileUrl, outputFile)
+        const updatesUrl = "https://updates.phasereditor2d.com"
+        const fileUrl = `${updatesUrl}/v${ver}/PhaserEditor2D-core-${ver}-${platform}.zip`
+
+        await download(fileUrl, outputFile)
+    }
 
     // unzip
 
@@ -106,6 +109,11 @@ export async function installEditor() {
     const zip = new AdmZip(outputFile)
 
     zip.extractAllTo(distInstallDir, true)
+
+    if (platform !== "windows") {
+
+        chmodSync(execFile, "777");
+    }
 
     // TODO check md5sum
 
