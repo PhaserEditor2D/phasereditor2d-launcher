@@ -63,11 +63,16 @@ export async function installEditor() {
 
     // compute metadata
 
-    const platform = {
+    let platform = {
         "darwin": "macos",
         "linux": "linux",
         "win32": "windows"
     }[process.platform]
+
+    if (process.arch === "arm64") {
+
+        platform += "_arm";
+    }
 
     const distName = `PhaserEditor2D-core-${ver}-${platform}`
     const fileName = `${distName}.zip`
