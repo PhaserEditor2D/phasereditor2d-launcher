@@ -1,6 +1,6 @@
 {
   "name": "phasereditor2d-launcher",
-  "version": "3.60.2",
+  "version": "3.60.3",
   "type": "module",
   "description": "Phaser Editor 2D launcher for NPM based projects.",
   "bin": "cli.js",
